@@ -38,7 +38,7 @@
 </script>
 
 <template>
-  <table>
+  <table class="table-auto w-full">
     <thead>
       <tr>
         <th>ID</th>

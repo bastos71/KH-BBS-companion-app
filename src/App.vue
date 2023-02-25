@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">BBS Companion</RouterLink>
-        <RouterLink to="/doc">Documentation</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/doc">Vue3 Documentation</RouterLink>
       </nav>
     </div>
   </header>
@@ -25,11 +19,9 @@ import HelloWorld from './components/HelloWorld.vue'
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+  border-bottom: #dcdcdc 1px solid;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 nav {
