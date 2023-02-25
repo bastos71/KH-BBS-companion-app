@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BirthBySleepCompanion from '../views/BirthBySleepCompanion.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,6 +8,11 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      component: BirthBySleepCompanion
+    },
+    {
+      path: '/doc',
+      name: 'doc',
       component: HomeView
     },
     {
