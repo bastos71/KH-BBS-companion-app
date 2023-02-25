@@ -6,7 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">BBS Companion</RouterLink>
+        <RouterLink to="/">BBS Mix Module</RouterLink>
+        <RouterLink to="/bbs-commands">BBS Commands</RouterLink>
         <RouterLink to="/doc">Vue3 Documentation</RouterLink>
       </nav>
     </div>
