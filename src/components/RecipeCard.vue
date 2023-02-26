@@ -101,6 +101,17 @@ const rank = computed(() => {
 
 <template>
   <div class="card">
+    <div class="card-header">
+      <span
+        v-for="character in availableForCharacters"
+        :key="character.apiId"
+        class="character-picture"
+        data-bs-toggle="tooltip"
+        data-bs-title="Default tooltip"
+      >
+        <img :src="character.imageUrl" :alt="character.name" />
+      </span>
+    </div>
     <div class="card-body">
       <h5 class="card-title">{{ resultCommand.name }}</h5>
       <p class="card-text">{{ recipe.percentage }}% chances of success</p>
@@ -159,13 +170,28 @@ const rank = computed(() => {
         <span v-if="perk">{{ perk.name }}</span>
         <i v-else>None</i>
       </span>
-
-      <span
-        v-for="character in availableForCharacters"
-        :key="character.apiId"
-        class="badge bg-secondary"
-        >{{ character.name }}</span
-      >
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.card-header {
+  display: flex;
+  justify-content: end;
+}
+
+.character-picture {
+  width: 2em;
+  margin-left: 0.5em;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.card-footer {
+  .badge {
+    margin-right: 0.5em;
+  }
+}
+</style>

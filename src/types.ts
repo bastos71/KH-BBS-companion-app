@@ -2,6 +2,7 @@ interface Character {
   apiId: string
   name: string
   initial: string
+  imageUrl?: string
 }
 
 interface Command {

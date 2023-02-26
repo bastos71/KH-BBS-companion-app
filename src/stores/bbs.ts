@@ -23,10 +23,13 @@ export const useBBSStore = defineStore('bbs', () => {
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function (record) {
+          const image = record.get('image') as any[]
+
           characters.push({
             apiId: record.id,
             name: record.get('name'),
-            initial: record.get('initial')
+            initial: record.get('initial'),
+            imageUrl: image ? (image[0] as any).url : null
           })
         })
         fetchNextPage()
