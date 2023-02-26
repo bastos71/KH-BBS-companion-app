@@ -24,6 +24,7 @@ const commands = bbsStore.commands
 const characters = bbsStore.characters
 const perks = bbsStore.perks
 const ranks = bbsStore.ranks
+const materials = bbsStore.materials
 
 const resultCommand = computed(() => {
   return commands.find((command: Command) => command.apiId === props.recipe.resultId)
@@ -57,6 +58,38 @@ const perk = computed(() => {
   })
 })
 
+interface PerkAndMaterial {
+  perk: Perk
+  material: Material
+}
+
+const availablePerks = computed(() => {
+  const availablePerks = perks
+    .filter((perk: Perk) => {
+      return perk.rankIds.includes(props.recipe.rankId)
+    })
+    .reduce((acc: PerkAndMaterial[], perk: Perk) => {
+      acc.push({
+        perk: perk,
+        material: materials.find((material: Material) => material.apiId === perk.materialId)
+      })
+
+      return acc
+    }, [])
+
+  availablePerks.sort((a: PerkAndMaterial, b: PerkAndMaterial) => {
+    if (a.material.name < b.material.name) {
+      return -1
+    }
+    if (a.material.name > b.material.name) {
+      return 1
+    }
+    return 0
+  })
+
+  return availablePerks
+})
+
 const rank = computed(() => {
   if (!props.recipe.rankId) {
     return null
@@ -85,6 +118,38 @@ const rank = computed(() => {
           <template v-else>Unknown</template>
         </span>
       </p>
+    </div>
+    <div class="accordion accordion-flush">
+      <div class="accordion-item">
+        <h2 class="accordion-header" :id="`collapse-heading-${recipe.apiId}`">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            :data-bs-target="`#collapse-${recipe.apiId}`"
+            aria-expanded="false"
+            :aria-controls="`collapse-${recipe.apiId}`"
+          >
+            Available Perks list
+          </button>
+        </h2>
+        <div
+          :id="`collapse-${recipe.apiId}`"
+          class="accordion-collapse collapse"
+          :aria-labelledby="`collapse-heading-${recipe.apiId}`"
+        >
+          <div class="accordion-body p-0">
+            <table class="table table-striped m-0">
+              <tbody>
+                <tr v-for="(availablePerk, key) in availablePerks" :key="key">
+                  <td>{{ availablePerk.material.name }}</td>
+                  <td>{{ availablePerk.perk.name }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="card-footer">
       <span v-if="rank" class="badge bg-secondary">Rank : {{ rank.name }}</span>
