@@ -2,6 +2,8 @@
 
 This app provides an interface to easily find which commands to mix together to get the right final a command and the right ability attached to it.
 
+View the [live Demo](https://bastos71.github.io/KH-BBS-companion-app/) 🎉
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).

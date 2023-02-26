@@ -44,8 +44,6 @@ import { RouterLink, RouterView } from 'vue-router'
     </nav>
   </header>
 
-  <h1>Welcome !</h1>
-
   <div class="container">
     <RouterView />
   </div>
