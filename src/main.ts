@@ -4,7 +4,10 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.css'
+import './assets/main.scss'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as bootstrap from 'bootstrap'
 
 const app = createApp(App)
 

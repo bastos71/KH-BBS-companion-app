@@ -52,57 +52,37 @@ function searchRecipe() {
 
 <template>
   <div>
-    <div class="w-full">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="first_ingredient">
-            First Ingredient
-          </label>
-          <select
-            v-model="firstIngredient"
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            id="first_ingredient"
-          >
-            <option :value="null">Please select an option</option>
-            <option v-for="command in commands" :key="command.apiId" :value="command">
-              {{ command.name }}
-            </option>
-          </select>
-        </div>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">First Ingredient</label>
+        <select v-model="firstIngredient" id="first_ingredient" class="form-select">
+          <option :value="null">Please select an option</option>
+          <option v-for="command in commands" :key="command.apiId" :value="command">
+            {{ command.name }}
+          </option>
+        </select>
+      </div>
 
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="second_ingredient">
-            Second Ingredient
-          </label>
-          <select
-            v-model="secondIngredient"
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            id="second_ingredient"
-          >
-            <option :value="null">Please select an option</option>
-            <option v-for="command in commands" :key="command.apiId" :value="command">
-              {{ command.name }}
-            </option>
-          </select>
-        </div>
+      <div class="mb-3">
+        <label class="form-label">Second Ingredient</label>
+        <select v-model="secondIngredient" id="second_ingredient" class="form-select">
+          <option :value="null">Please select an option</option>
+          <option v-for="command in commands" :key="command.apiId" :value="command">
+            {{ command.name }}
+          </option>
+        </select>
+      </div>
 
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="material">
-            Material
-          </label>
-          <select
-            v-model="material"
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            id="second_ingredient"
-          >
-            <option :value="null">Please select an option</option>
-            <option v-for="material in materials" :key="material.apiId" :value="material">
-              {{ material.name }}
-            </option>
-          </select>
-        </div>
-      </form>
-    </div>
+      <div class="mb-3">
+        <label class="form-label">Material</label>
+        <select v-model="material" id="second_ingredient" class="form-select">
+          <option :value="null">Please select an option</option>
+          <option v-for="material in materials" :key="material.apiId" :value="material">
+            {{ material.name }}
+          </option>
+        </select>
+      </div>
+    </form>
 
     <template v-if="matches.length > 0">
       <RecipeCard
@@ -112,9 +92,9 @@ function searchRecipe() {
         :key="match.apiId"
       />
     </template>
-    <div v-else class="w-full rounded overflow-hidden shadow-lg">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">No recipe found</div>
+    <div v-else class="card">
+      <div class="card-body">
+        <p class="card-text">No recipe found</p>
       </div>
     </div>
   </div>

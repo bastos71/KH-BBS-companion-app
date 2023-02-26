@@ -7,7 +7,7 @@ const commands = bbsStore.commands
 </script>
 
 <template>
-  <table class="table-auto w-full">
+  <table class="table">
     <thead>
       <tr>
         <th>ID</th>
