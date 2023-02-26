@@ -6,6 +6,7 @@ import * as path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/KH-BBS-companion-app/',
   plugins: [vue()],
   resolve: {
     alias: {
