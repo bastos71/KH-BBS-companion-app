@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import RecipeCard from './RecipeCard.vue'
-
+import RecipeList from '@/components/RecipeList.vue'
 // @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
 import { ref, watch } from 'vue'
@@ -20,10 +19,10 @@ let material: Ref<Material | null> = ref(null)
 
 let matches: Ref<Recipe[]> = ref([])
 
-watch(firstIngredient, searchRecipe)
-watch(secondIngredient, searchRecipe)
+watch(firstIngredient, searchRecipes)
+watch(secondIngredient, searchRecipes)
 
-function searchRecipe() {
+function searchRecipes() {
   matches.value = recipes.filter((recipe: Recipe) => {
     const firstIngredientId = firstIngredient.value?.apiId
     const secondIngredientId = secondIngredient.value?.apiId
@@ -84,18 +83,6 @@ function searchRecipe() {
       </div>
     </form>
 
-    <template v-if="matches.length > 0">
-      <RecipeCard
-        :recipe="match"
-        :material="material"
-        v-for="match in matches"
-        :key="match.apiId"
-      />
-    </template>
-    <div v-else class="card">
-      <div class="card-body">
-        <p class="card-text">No recipe found</p>
-      </div>
-    </div>
+    <RecipeList :show-material="false" :recipes="matches" :material="material" />
   </div>
 </template>

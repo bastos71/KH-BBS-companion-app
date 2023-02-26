@@ -29,6 +29,11 @@ import { RouterLink, RouterView } from 'vue-router'
               >
             </li>
             <li class="nav-item">
+              <RouterLink class="nav-link" active-class="active" to="/bbs-search-engine"
+                >BBS Search Engine</RouterLink
+              >
+            </li>
+            <li class="nav-item">
               <RouterLink class="nav-link" active-class="active" to="/doc"
                 >Vue3 Documentation</RouterLink
               >
