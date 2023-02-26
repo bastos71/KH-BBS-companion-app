@@ -21,7 +21,7 @@ withDefaults(
 <template>
   <div class="row">
     <template v-if="recipes.length > 0">
-      <div class="col-md-6 mb-4" v-for="recipe in recipes" :key="recipe.apiId">
+      <div class="col-md-6 col-lg-4 mb-4" v-for="recipe in recipes" :key="recipe.apiId">
         <RecipeCard
           :show-perk-tag="showPerkTag"
           :show-material="showMaterial"
