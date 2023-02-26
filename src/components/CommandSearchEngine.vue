@@ -48,36 +48,17 @@ function searchRecipes() {
     <form>
       <div class="mb-3">
         <label class="form-label">Command</label>
-        <select v-model="command" id="character" class="form-select">
-          <option :value="null">Please select an option</option>
-          <option v-for="commandItem in commands" :key="commandItem.apiId" :value="commandItem">
-            {{ commandItem.name }}
-          </option>
-        </select>
+        <v-select :options="commands" label="name" v-model="command"></v-select>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Character</label>
-        <select v-model="character" id="character" class="form-select">
-          <option :value="null">Please select an option</option>
-          <option
-            v-for="characterItem in characters"
-            :key="characterItem.apiId"
-            :value="characterItem"
-          >
-            {{ characterItem.name }}
-          </option>
-        </select>
+        <v-select :options="characters" label="name" v-model="character"></v-select>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Perk</label>
-        <select v-model="perk" id="perk" class="form-select">
-          <option :value="null">Please select an option</option>
-          <option v-for="perkItem in perks" :key="perkItem.apiId" :value="perkItem">
-            {{ perkItem.name }}
-          </option>
-        </select>
+        <v-select :options="perks" label="name" v-model="perk"></v-select>
       </div>
     </form>
 
