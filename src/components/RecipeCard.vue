@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import type Recipe from '@/types/Recipe'
 import { computed } from 'vue'
+// @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
-import type Command from '@/types/Command'
-import type Character from '@/types/Character'
-import type Material from '@/types/Material'
-import type Perk from '@/types/Perk'
-import type Rank from '@/types/Rank'
+// @ts-ignore
+import type { Character, Command, Material, Perk, Rank, Recipe } from '@/types'
 
 const props = defineProps<{
   recipe: Recipe
@@ -34,7 +31,7 @@ const secondCommand = computed(() => {
 
 const availableForCharacters = computed(() => {
   return characters.filter((character: Character) =>
-    Object.values(props.recipe.charactersIds).includes(character.apiId)
+    (Object as any).values(props.recipe.charactersIds).includes(character.apiId)
   )
 })
 

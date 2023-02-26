@@ -1,12 +1,8 @@
 import Airtable from 'airtable'
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
-import type Command from '@/types/Command'
-import type Character from '@/types/Character'
-import type Material from '@/types/Material'
-import type Rank from '@/types/Rank'
-import type Perk from '@/types/Perk'
-import type Recipe from '@/types/Recipe'
+// @ts-ignore
+import type { Character, Command, Material, Perk, Rank, Recipe } from '@/types'
 
 const base = new Airtable({ apiKey: import.meta.env.VITE_AIRTABLE_API_TOKEN }).base(
   import.meta.env.VITE_AIRTABLE_BASE_ID
@@ -94,10 +90,12 @@ export const useBBSStore = defineStore('bbs', () => {
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function (record) {
+          const material = record.get('material') as string[]
+
           perks.push({
             apiId: record.id,
             name: record.get('name'),
-            materialId: record.get('material')[0],
+            materialId: material ? material[0] : null,
             rankIds: record.get('ranks')
           })
         })
@@ -141,13 +139,18 @@ export const useBBSStore = defineStore('bbs', () => {
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function (record) {
+          const resultCommand = record.get('result_command') as string[]
+          const firstCommand = record.get('first_command') as string[]
+          const secondCommand = record.get('second_command') as string[]
+          const rank = record.get('rank') as string[]
+
           recipes.push({
             apiId: record.id,
             id: record.get('id'),
-            resultId: record.get('result_command')[0],
-            firstIngredientId: record.get('first_command')[0],
-            secondIngredientId: record.get('second_command')[0],
-            rankId: record.get('rank') ? record.get('rank')[0] : null,
+            resultId: resultCommand ? resultCommand[0] : null,
+            firstIngredientId: firstCommand ? firstCommand[0] : null,
+            secondIngredientId: secondCommand ? secondCommand[0] : null,
+            rankId: rank ? rank[0] : null,
             percentage: record.get('percentage'),
             charactersIds: record.get('characters')
           })

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import RecipeCard from './RecipeCard.vue'
 
+// @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
 import { ref, watch } from 'vue'
 import type { Ref } from 'vue'
-import type Command from '@/types/Command'
-import type Material from '@/types/Material'
-import type Recipe from '@/types/Recipe'
+// @ts-ignore
+import type { Command, Material, Recipe } from '@/types'
 
 const bbsStore = useBBSStore()
 

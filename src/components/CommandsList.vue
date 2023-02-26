@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
 
 const bbsStore = useBBSStore()
