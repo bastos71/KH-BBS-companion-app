@@ -51,20 +51,28 @@ function searchRecipes() {
 
 <template>
   <div>
-    <form>
-      <div class="mb-3">
-        <label class="form-label">First Ingredient</label>
-        <v-select :options="commands" label="name" v-model="firstIngredient"></v-select>
-      </div>
+    <form class="search-form">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">First Ingredient</label>
+            <v-select :options="commands" label="name" v-model="firstIngredient"></v-select>
+          </div>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label">Second Ingredient</label>
-        <v-select :options="commands" label="name" v-model="secondIngredient"></v-select>
-      </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Second Ingredient</label>
+            <v-select :options="commands" label="name" v-model="secondIngredient"></v-select>
+          </div>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label">Material</label>
-        <v-select :options="materials" label="name" v-model="material"></v-select>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Material</label>
+            <v-select :options="materials" label="name" v-model="material"></v-select>
+          </div>
+        </div>
       </div>
     </form>
 

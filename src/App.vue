@@ -1,40 +1,52 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import GameLogo from './assets/bbsfm-logo.png'
 </script>
 
 <template>
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <RouterLink class="nav-link" active-class="active" to="/">BBS Mix Module</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" active-class="active" to="/bbs-search-engine"
-                >BBS Search Engine</RouterLink
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <header class="header">
+    <img class="header__logo" :src="GameLogo" alt="" />
   </header>
 
   <div class="container">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <RouterLink class="nav-link kh-button" active-class="kh-button__active" to="/"
+          ><span class="kh-button__text">BBS Mix Module</span></RouterLink
+        >
+      </li>
+      <li class="nav-item">
+        <RouterLink
+          class="nav-link kh-button"
+          active-class="kh-button__active"
+          to="/bbs-search-engine"
+          ><span class="kh-button__text">BBS Search Engine</span></RouterLink
+        >
+      </li>
+    </ul>
+
     <RouterView />
   </div>
 </template>
+
+<style scoped lang="scss">
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+
+  &__logo {
+    width: 20em;
+    max-width: 100%;
+  }
+}
+
+.nav {
+  margin-bottom: 1em;
+}
+
+.nav-item {
+  margin: 1em;
+}
+</style>

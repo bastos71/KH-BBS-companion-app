@@ -1,4 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 @import "vue-select/dist/vue-select.css";
 
+@import "fonts";
 @import "v-select";
+@import "kh-button";
+@import "search-form";
+
+body {
+  font-family: 'KHMenu', Arial, sans-serif;
+}

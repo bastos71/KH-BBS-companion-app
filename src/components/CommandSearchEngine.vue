@@ -45,20 +45,28 @@ function searchRecipes() {
 
 <template>
   <div>
-    <form>
-      <div class="mb-3">
-        <label class="form-label">Command</label>
-        <v-select :options="commands" label="name" v-model="command"></v-select>
-      </div>
+    <form class="search-form">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Command</label>
+            <v-select :options="commands" label="name" v-model="command"></v-select>
+          </div>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label">Character</label>
-        <v-select :options="characters" label="name" v-model="character"></v-select>
-      </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Character</label>
+            <v-select :options="characters" label="name" v-model="character"></v-select>
+          </div>
+        </div>
 
-      <div class="mb-3">
-        <label class="form-label">Perk</label>
-        <v-select :options="perks" label="name" v-model="perk"></v-select>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Perk</label>
+            <v-select :options="perks" label="name" v-model="perk"></v-select>
+          </div>
+        </div>
       </div>
     </form>
 

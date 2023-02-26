@@ -5,3 +5,7 @@
   --vs-selected-color: var(--bs-body-color);
   --vs-dropdown-bg: var(--bs-form-control-bg);
 }
+
+.vs__dropdown-toggle {
+  background-color: var(--vs-dropdown-bg);
+}
