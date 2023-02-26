@@ -19,20 +19,22 @@ withDefaults(
 </script>
 
 <template>
-  <div>
+  <div class="row">
     <template v-if="recipes.length > 0">
-      <RecipeCard
-        :show-perk-tag="showPerkTag"
-        :show-material="showMaterial"
-        :recipe="recipe"
-        :material="material"
-        v-for="recipe in recipes"
-        :key="recipe.apiId"
-      />
+      <div class="col-md-6" v-for="recipe in recipes" :key="recipe.apiId">
+        <RecipeCard
+          :show-perk-tag="showPerkTag"
+          :show-material="showMaterial"
+          :recipe="recipe"
+          :material="material"
+        />
+      </div>
     </template>
-    <div v-else class="card">
-      <div class="card-body">
-        <p class="card-text">No recipe found</p>
+    <div v-else class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">No recipe found</p>
+        </div>
       </div>
     </div>
   </div>
