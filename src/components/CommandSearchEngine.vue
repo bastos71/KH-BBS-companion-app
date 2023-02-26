@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RecipeList from '@/components/RecipeList.vue'
+import RecipeList from './RecipeList.vue'
 // @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
 import { ref, watch } from 'vue'
