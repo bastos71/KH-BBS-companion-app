@@ -4,8 +4,15 @@
   --vs-border-width: var(--bs-border-width);
   --vs-selected-color: var(--bs-body-color);
   --vs-dropdown-bg: var(--bs-form-control-bg);
+  --vs-controls-color: var(--vs-selected-color);
 }
 
-.vs__dropdown-toggle {
-  background-color: var(--vs-dropdown-bg);
+.vs {
+  &__dropdown-toggle {
+    background-color: var(--vs-dropdown-bg);
+  }
+
+  &__clear {
+    display: flex;
+  }
 }
