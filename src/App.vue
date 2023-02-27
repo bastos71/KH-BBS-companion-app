@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import GameLogo from './assets/bbsfm-logo.png'
 import GihtubLogo from './icons/github.vue'
-import DarkModeSwitch from '@/components/DarkModeSwitch.vue'
+import DarkModeSwitch from './components/DarkModeSwitch.vue'
 </script>
 
 <template>
