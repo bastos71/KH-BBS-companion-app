@@ -27,6 +27,7 @@ export const useBBSStore = defineStore('bbs', () => {
 
           characters.push({
             apiId: record.id,
+            id: record.get('uniqid'),
             name: record.get('name'),
             initial: record.get('initial'),
             imageUrl: image ? (image[0] as any).url : null

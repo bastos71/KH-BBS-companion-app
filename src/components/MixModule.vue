@@ -2,7 +2,7 @@
 import RecipeList from './RecipeList.vue'
 // @ts-ignore
 import { useBBSStore } from '@/stores/bbs'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Ref } from 'vue'
 // @ts-ignore
 import type { Command, Material, Recipe } from '@/types'
@@ -22,6 +22,21 @@ let matches: Ref<Recipe[]> = ref([])
 watch(firstIngredient, searchRecipes)
 watch(secondIngredient, searchRecipes)
 
+const ingredients = computed(() => {
+  const ingredientIds = recipes.reduce((acc: string[], recipe: Recipe) => {
+    if (!acc.includes(recipe.firstIngredientId)) {
+      acc.push(recipe.firstIngredientId)
+    }
+    if (!acc.includes(recipe.secondIngredientId)) {
+      acc.push(recipe.secondIngredientId)
+    }
+
+    return acc
+  }, [])
+
+  return commands.filter((command: Command) => ingredientIds.includes(command.apiId))
+})
+
 function searchRecipes() {
   matches.value = recipes.filter((recipe: Recipe) => {
     const firstIngredientId = firstIngredient.value?.apiId
@@ -39,8 +54,8 @@ function searchRecipes() {
     const singleIngredient = firstIngredientId ?? secondIngredientId
     if (singleIngredient) {
       return (
-        recipe.firstIngredientId === firstIngredientId ||
-        recipe.secondIngredientId === secondIngredientId
+        recipe.firstIngredientId === singleIngredient ||
+        recipe.secondIngredientId === singleIngredient
       )
     }
 
@@ -56,14 +71,14 @@ function searchRecipes() {
         <div class="col-md-4">
           <div class="mb-3">
             <label class="form-label">First Ingredient</label>
-            <v-select :options="commands" label="name" v-model="firstIngredient"></v-select>
+            <v-select :options="ingredients" label="name" v-model="firstIngredient"></v-select>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="mb-3">
             <label class="form-label">Second Ingredient</label>
-            <v-select :options="commands" label="name" v-model="secondIngredient"></v-select>
+            <v-select :options="ingredients" label="name" v-model="secondIngredient"></v-select>
           </div>
         </div>
 
