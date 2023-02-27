@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import GameLogo from './assets/bbsfm-logo.png'
+import GihtubLogo from './icons/github.vue'
+import DarkModeSwitch from '@/components/DarkModeSwitch.vue'
 </script>
 
 <template>
   <header class="header">
-    <img class="header__logo" :src="GameLogo" alt="" />
+    <img class="header__logo" :src="GameLogo" alt="Kingdom Hearts Birth By Sleep Final Mix" />
+
+    <div class="header__actions">
+      <DarkModeSwitch class="header__dark-mode-switch" />
+
+      <a
+        href="https://github.com/bastos71/KH-BBS-companion-app"
+        target="_blank"
+        class="header__github-link"
+        title="Bastos71 on github"
+      >
+        <GihtubLogo class="header__github-logo" />
+      </a>
+    </div>
   </header>
 
   <section class="container">
@@ -55,6 +70,32 @@ import GameLogo from './assets/bbsfm-logo.png'
 
   &__logo {
     width: 20em;
+    max-width: 100%;
+  }
+
+  &__actions {
+    position: fixed;
+    z-index: 1;
+    right: 1em;
+    top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75em;
+  }
+
+  &__dark-mode-switch {
+    margin-right: 1em;
+  }
+
+  &__github-link {
+    display: flex;
+    width: 2em;
+  }
+
+  &__github-logo {
+    fill: var(--bs-body-color);
+    width: 2em;
     max-width: 100%;
   }
 }
